@@ -25,7 +25,8 @@
     "lint:fix": "eslint . --fix",
     "bootstrap": "pnpm install && pnpm run common:prepare",
     "common:cleanup": "rimraf node_modules && rimraf pnpm-lock.yaml",
-    "common:prepare": "husky install"
+    "common:prepare": "husky install",
+    "upstream": "node ./scripts/upstream.js"
   },
   "dependencies": {
     "@traptitech/markdown-it-katex": "^3.6.0",
