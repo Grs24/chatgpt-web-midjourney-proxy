@@ -1,9 +1,8 @@
 {
-  "name": "chatgpt-web-midjourney-proxy",
+  "name": "ai",
   "version": "2.17.8",
   "private": false,
-  "description": "ChatGPT Web Midjourney Proxy",
-  "author": "Dooy <ydlhero@gmail.com>",
+  "description": "ai",
   "keywords": [
     "chatgpt-web",
     "chatgpt",

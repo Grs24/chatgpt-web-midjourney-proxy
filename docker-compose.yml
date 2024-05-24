@@ -1,0 +1,17 @@
+version: '3'
+services:
+  chatgpt-midjourney-web:
+    build: .  # 使用当前目录中的 Dockerfile 构建镜像
+    ports:
+      - "80:3002"
+    environment:
+      OPENAI_API_BASE_URL: "https://api.openai-up.com"
+      OPENAI_API_KEY: "sk-jvOgVLpvX9GWawGo275eD04cB3254a23977267E369Ac2903"
+      MJ_SERVER: "https://api.openai-up.com"
+      MJ_API_SECRET: "sk-jvOgVLpvX9GWawGo275eD04cB3254a23977267E369Ac2903"
+      SUNO_SERVER: "https://api.openai-up.com"
+      SUNO_KEY: "sk-jvOgVLpvX9GWawGo275eD04cB3254a23977267E369Ac2903"
+      API_UPLOADER: "1"
+      AUTH_SECRET_KEY: "bihukeji2023"
+    volumes:
+      - ./uploads:/app/uploads
