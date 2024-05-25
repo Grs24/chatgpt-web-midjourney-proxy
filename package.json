@@ -1,8 +1,8 @@
 {
-  "name": "ai",
+  "name": "chatgpt-midjourney-web",
   "version": "2.17.9",
   "private": false,
-  "description": "ai",
+  "description": "chatgpt-midjourney-web",
   "keywords": [
     "chatgpt-web",
     "chatgpt",
