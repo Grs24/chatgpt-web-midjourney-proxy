@@ -8,7 +8,7 @@ import aiCanvas from './aiCanvas.vue'
 import MarkdownIt from 'markdown-it'
 import {t} from "@/locales"
 
-interface Props { 
+interface Props {
   chat:Chat.Chat
   ,mdi:MarkdownIt
 }
@@ -21,14 +21,14 @@ const reload= ()=>{
     flechTask(chat.value);
 }
 const sub= (type:string,index:number)=>{
-     
+
     let text= chat.value.opt?.promptEn+` ${type} ${index}`;
     let obj={
         action:'change',
         version:1,text,
         data:{
             "action": type,
-            "index": index, 
+            "index": index,
             "taskId":  chat.value.mjID
             }
     }
@@ -39,7 +39,7 @@ const sub= (type:string,index:number)=>{
 // const saveImg= (myChat:Chat.Chat)=>{
 //     //homeStore.setMyData({act:'saveImg',actData:chat.value.opt?.promptEn});
 //     if(myChat.opt?.progress=='IMAGINE'){
-        
+
 //     }else{
 //         st.value.isLoad=true;
 //     }
@@ -63,9 +63,9 @@ const subV2= (b:{k:string,n:string})=>{
     }
      let obj={
         action:'changeV2',
-        version:1, 
+        version:1,
         data:{
-            "customId": chat.value.opt?.buttons[i].customId, 
+            "customId": chat.value.opt?.buttons[i].customId,
             "taskId":  chat.value.mjID
             }
     }
@@ -78,12 +78,12 @@ const subCustom = ()=>{
     let i = getIndex( chat.value.opt?.buttons, {k: 'CustomZoom::' ,n: t('mj.czoom') } );
     let obj={
         action:'CustomZoom',
-        version:1, 
+        version:1,
         data:{
-            "customId": chat.value.opt?.buttons[i].customId, 
+            "customId": chat.value.opt?.buttons[i].customId,
             "taskId":  chat.value.mjID
             },
-        maskData:{  
+        maskData:{
             "prompt": st.value.customText ,
         }
     }
@@ -91,25 +91,25 @@ const subCustom = ()=>{
     homeStore.setMyData({act:'draw',actData:obj});
 
     st.value.isCustom= false;
-    
+
 }
 
 const maskOk=(d:any)=>{
     if(chat.value.opt?.buttons ==undefined ) return;
-   
+
    mlog('maskOk',d  );
     let i = getIndex( chat.value.opt?.buttons, {k:':Inpaint::1',n: t('mj.redraw') } );
     let obj={
         action:'mask',
-        version:1, 
+        version:1,
         data:{
-            "customId": chat.value.opt?.buttons[i].customId, 
+            "customId": chat.value.opt?.buttons[i].customId,
             "taskId":  chat.value.mjID
             },
-        maskData:{ 
+        maskData:{
   "maskBase64": d.mask ,
   "prompt": d.prompt ,
-   //"taskId": "14001934816969359" 
+   //"taskId": "14001934816969359"
         }
     }
    homeStore.setMyData({act:'draw',actData:obj});
@@ -117,12 +117,12 @@ const maskOk=(d:any)=>{
    st.value.isShow= false;
 }
 //专业版本按钮
-const bt= [ 
+const bt= [
     [
     {k:':upsample::1',n:'U1'}
     ,{k:':upsample::2',n:'U2'}
     ,{k:':upsample::3',n:'U3'}
-    ,{k:':upsample::4',n:'U4'} 
+    ,{k:':upsample::4',n:'U4'}
         ,{k:'high_variation',n: t('mj.high_variation')},
         {k:'low_variation',n:t('mj.low_variation')},
         {k:':Inpaint::1',n:t('mj.redraw')},
@@ -137,7 +137,7 @@ const bt= [
         ,{k:'Job::PicReader::3',n:'T3'}
         ,{k:'Job::PicReader::4',n:'T4'}
         ,{k:'Picread::Retry',n: t('mj.retry')}
-        
+
         ,{k:'PromptAnalyzer::1',n:'T1'}
         ,{k:'PromptAnalyzer::2',n:'T2'}
         ,{k:'PromptAnalyzer::3',n:'T3'}
@@ -158,7 +158,7 @@ const bt= [
     ,{k:'pan_down',n:t('mj.pan_down')}
     ,{k:'reroll::0',n: t('mjchat.reroll')}
     ,{k:'upsample_v5_2x',n:t('mj.up2')}
-    ,{k:'upsample_v5_4x',n:t('mj.up4')} 
+    ,{k:'upsample_v5_4x',n:t('mj.up4')}
     ,{k:'upsample_v6_2x_subtle',n:t('mj.subtle')}//t('mj.up2') 'Subtle'
     ,{k:'upsample_v6_2x_creative',n:t('mj.creative')}  //'Creative'
     ]
@@ -167,7 +167,7 @@ const bt= [
 const getIndex = (arr:any[], ib:any )=> arr.findIndex( (v9:any)=>v9.customId.indexOf(ib.k)>-1 ) ;
 const getIndexName=  (arr:any[], ib:any )=> {
   const i= getIndex( arr,ib);
-  if(ib.k=='upsample_v5_2x') return ib.n; 
+  if(ib.k=='upsample_v5_2x') return ib.n;
 
   if(ib.k=='upsample_v5_4x') return ib.n;
   //if(ib.k=='upsample_v6_4x') return ib.n;
@@ -183,7 +183,7 @@ const load = async (isFlash=false )=>{
     try {
         if(chat.value.opt?.imageUrl){
             //await loadImg(chat.value.opt?.imageUrl);
-            let base64 = await localGet(key );  
+            let base64 = await localGet(key );
             if(!base64 || isFlash ) {
                 const ubase64=  await url2base64( mjImgUrl(  chat.value.opt?.imageUrl ) ,key );
                 base64= ubase64.base64;
@@ -194,7 +194,7 @@ const load = async (isFlash=false )=>{
     } catch (error) {
         mlog('图片保存失败',error);
     }
-    
+
     st.value.isLoadImg=true;
 }
 
@@ -212,16 +212,16 @@ watch(()=>homeStore.myData.act,(n)=>{
     }
 })
 const text = computed(() => {
-  const value =  props.chat.opt?.properties?.finalZhPrompt 
+  const value =  props.chat.opt?.properties?.finalZhPrompt
  return props.mdi.render(value)
-   
+
 })
 
 
 const changCustom = ()=>{
     mlog('changCustom', chat.value.opt); //prompt
     st.value.customText=chat.value.opt?.prompt??'';
-    
+
     st.value.customText +="  --zoom 1.8";
 }
 
@@ -234,18 +234,18 @@ load();
 </script>
 <template>
 <div v-if="st.isLoadImg">
-    
+
     <template   v-if="chat.opt?.progress">
-        <div v-if="chat.opt?.action=='SHORTEN'" class="markdown-body" v-html="text" > 
-             
-        </div> 
-        <div v-else-if="chat.opt?.action!='IMAGINE'" class="py-2 text-[#666]  whitespace-pre-wrap">{{ chat.opt?.promptEn }} (<span v-html="chat.opt?.action"></span>)</div> 
-        <NImage v-if="chat.opt.imageUrl" :src="st.uri_base64?st.uri_base64: mjImgUrl( chat.opt.imageUrl)" class=" rounded-sm " :class="[isMobile?'':'!max-w-[500px]']"  /> 
+        <div v-if="chat.opt?.action=='SHORTEN'" class="markdown-body" v-html="text" >
+
+        </div>
+        <div v-else-if="chat.opt?.action!='IMAGINE'" class="py-2 text-[#666]  whitespace-pre-wrap">{{ chat.opt?.promptEn }} (<span v-html="chat.opt?.action"></span>)</div>
+        <NImage v-if="chat.opt.imageUrl" :src="st.uri_base64?st.uri_base64: mjImgUrl( chat.opt.imageUrl)" class=" rounded-sm " :class="[isMobile?'':'!max-w-[500px]']"  />
         <div v-if="chat.opt?.status=='SUCCESS' " class=" space-y-2"  >
             <template v-if="chat.opt?.buttons">
-                <div v-for="(bts,ii) in bt" class=" flex justify-start items-center flex-wrap "> 
+                <div v-for="(bts,ii) in bt" class=" flex justify-start items-center flex-wrap ">
                     <template v-for="ib in bts" >
-                    <div class="p-1" v-if="   getIndex(chat.opt?.buttons, ib) >-1"> 
+                    <div class="p-1" v-if="   getIndex(chat.opt?.buttons, ib) >-1">
                         <NButton  @click="subV2(ib)" size="small" :type="ii==1?'warning':'primary'" >{{  getIndexName(chat.opt?.buttons, ib)  }}  </NButton>
                     </div>
                     </template>
@@ -270,14 +270,14 @@ load();
             </template>
         </div>
         <div v-else-if="!chat.loading"> <NButton type="primary" @click="reload()">{{ $t('mjchat.reload') }}</NButton></div>
-        <div v-else-if="chat.opt.progress" class="py-2 min-w-[200px]"> {{$t('mjchat.progress')}}{{chat.opt.progress}}</div>
+        <div v-else-if="chat.opt.progress" class="py-2 min-w-[200px]"> {{$t('mjchat.progress')}}{{chat.opt.progress === '0%' ? '5%' : chat.opt.progress }}</div>
         <div v-else class="py-2"> {{ $t('mjchat.wait') }}</div>
         <!-- <div v-html="chat.opt?.action"></div> -->
     </template>
-    <div v-else-if="chat.opt?.status=='FAILURE'"> 
+    <div v-else-if="chat.opt?.status=='FAILURE'">
         <div>{{ $t('mjchat.failReason') }}<p>{{ chat.opt?.failReason }}</p></div>
     </div>
-    <div v-else> 
+    <div v-else>
      {{ $t('mjchat.wait2',{id:chat.mjID}) }}
         <div v-if="!chat.loading"> <NButton type="primary" @click="reload()">{{ $t('mjchat.reload') }}</NButton></div>
 
@@ -288,18 +288,18 @@ load();
         <aiCanvas :chat="chat" :base64="st.uri_base64" v-if="st.isShow" @success="maskOk" />
     </NModal>
     <NModal v-model:show="st.isCustom"   preset="card"  :title="$t('mj.customTitle')" style="max-width: 600px;" @close="st.isCustom=false" >
-         <n-input    type="textarea"  v-model:value="st.customText"    round   maxlength="2000" show-count 
+         <n-input    type="textarea"  v-model:value="st.customText"    round   maxlength="2000" show-count
       :autosize="{   minRows:3, maxRows:8 }" />
-           <div class="pt-2 flex justify-between items-center">  
-                <div class="text-neutral-500">{{ $t('mj.zoominfo') }}</div>   
-                <NButton type="primary"    size="small" @click="subCustom">{{ $t('mjchat.submit') }}</NButton> 
+           <div class="pt-2 flex justify-between items-center">
+                <div class="text-neutral-500">{{ $t('mj.zoominfo') }}</div>
+                <NButton type="primary"    size="small" @click="subCustom">{{ $t('mjchat.submit') }}</NButton>
           </div>
     </NModal>
 </div>
 <div v-else class="w-[200px] h-[150px] flex flex-col justify-center items-center" >
     <div class="p-4">{{ $t('mjchat.loading') }}</div>
-    
-    <NButton type="primary" v-if="chat.opt?.imageUrl" ><a :href=" mjImgUrl(chat.opt?.imageUrl)" target="_blank">{{ $t('mjchat.openurl') }}</a></NButton> 
+
+    <NButton type="primary" v-if="chat.opt?.imageUrl" ><a :href=" mjImgUrl(chat.opt?.imageUrl)" target="_blank">{{ $t('mjchat.openurl') }}</a></NButton>
 </div>
 
 
