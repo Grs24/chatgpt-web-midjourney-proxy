@@ -14,6 +14,8 @@ export const homeStore = reactive({
         ,ctoken:'' //cookie
         ,isClient: typeof window !== 'undefined' && window.__TAURI__
         ,ms:{} as any
+        ,is_luma_pro:false
+        ,is_viggle_pro:false
        
     }
     
@@ -100,9 +102,14 @@ export interface gptServerType{
     MJ_CDN_WSRV?:boolean //wsrv.nl
     SUNO_SERVER:string
     SUNO_KEY:string
+    LUMA_SERVER:string
+    LUMA_KEY:string
+    VIGGLE_SERVER:string
+    VIGGLE_KEY:string
     IS_SET_SYNC?:boolean
     GPTS_GX?:boolean
-
+    IS_LUMA_PRO?:boolean
+    IS_VIGGLE_PRO?:boolean
 }
 
 const  getServerDefault=()=>{
@@ -115,7 +122,11 @@ let v:gptServerType={
         SUNO_KEY:'',
         SUNO_SERVER:'',
         MJ_CDN_WSRV:false
-        ,IS_SET_SYNC:true
+        ,IS_SET_SYNC:true,
+        LUMA_SERVER:'',
+        LUMA_KEY:'',
+        VIGGLE_SERVER:'',
+        VIGGLE_KEY:'',
     }
     return v ;
 }

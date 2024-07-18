@@ -285,6 +285,11 @@ export default {
     "no1m": "Image size cannot exceed 1M",
     "imgExt": "Images support only jpg, gif, png, jpeg formats"
     ,"setSync": "Synchronize Midjourney and Suno"
+
+    ,"addGPTS": "Add GPTs",
+    "addPlaceholder": "Paste the GID of the GPTs here or directly paste the link of the GPTs",
+    "gidError": "Valid GID not found, please fill in again",
+    "success3": "GPTs added successfully!"
   },
 
 	draw: {
@@ -402,6 +407,56 @@ export default {
     "server": "Suno API Endpoint",
     "serverabout": "Suno Related",
     "setOpenKeyPlaceholder": "Related KEY for Suno API; optional"
+
+    ,upMps:'Upload'
+    ,extend:'Extend'
+    ,extendFrom:'Extend From'
+    ,extendAt:'Extend at'
+    ,fail:'Fail'
+    ,info:'Note: <br> Uploaded audio must be between 6 seconds and 60 seconds in duration.'
+  }
+   ,video: {
+    menu: "Videos",
+    menuinfo: "Luma and other video generate",
+    descpls: "Video generate description",
+    lumaabout: "About Luma",
+    lumaserver: "Luma API endpoint",
+    setOpenKeyPlaceholder: "Key for Luma API, optional",
+    generate: "Generate video",
+    nodata: "No available videos, please generate first!",
+    selectimg: "Select image",
+    clear: "Clear",
+    plsInput: "Please input content!",
+    submitSuccess: "Submitted successfully!",
+    process: "Video generating...",
+    repeat: "Get again",
+    pending: 'Status: Queued',
+    processing: 'Status: Processing',
+    download: 'Download',
+    extend: 'Extend'
+
+  },
+  dance:{
+    menu: "Dance",
+    menuinfo: "Create dance videos with Viggle and others.",
+    character: "Character",
+    viggleabout: "About Viggle",
+    viggleserver: "Viggle API Endpoint",
+    setOpenKeyPlaceholder: "Viggle API key, optional",
+    info: "Instructions:<br>1. Character images should preferably be full-body photos.<br>2. Dance template videos should be personal videos, not group dances.",
+    model: "Model",
+    bgw: "White Background",
+    bgg: "Green Background",
+    bgmoban: "Original Background",
+    bgrole: "Character Background",
+    gring: "Generating...",
+    uprolefirst: "Please upload character image first",
+    uprolefail: "Upload failed",
+    upvideo: "+ Upload Template Dance Video",
+    usevideo: "+ Use Official Template",
+    moban: "Dance Template",
+    moban2: "Template Name",
+    use: "Use"
   }
 
 

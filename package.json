@@ -1,6 +1,6 @@
 {
   "name": "chatgpt-midjourney-web",
-  "version": "2.17.10",
+  "version": "2.19.5",
   "private": false,
   "description": "chatgpt-midjourney-web",
   "keywords": [
@@ -29,6 +29,8 @@
     "upstream": "node ./scripts/upstream.js"
   },
   "dependencies": {
+    "@ffmpeg/ffmpeg": "^0.12.10",
+    "@ffmpeg/util": "^0.12.1",
     "@traptitech/markdown-it-katex": "^3.6.0",
     "@vueuse/core": "^9.13.0",
     "eventsource-parser": "^1.1.1",
