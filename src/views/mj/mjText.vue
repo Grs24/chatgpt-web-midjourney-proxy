@@ -317,6 +317,9 @@ load()
         </NButton>
       </div>
     </div>
+    <div class=" hidden">
+      {{ chat.dateTime }}
+    </div>
 
     <NModal v-model:show="st.isShow" preset="card" :title="$t('mjchat.redrawEditing')" style="max-width: 800px;" @close="st.isShow = false">
       <aiCanvas v-if="st.isShow" :chat="chat" :base64="st.uri_base64" @success="maskOk" />
@@ -344,11 +347,6 @@ load()
     <NButton v-if="chat.opt?.imageUrl" type="primary">
       <a :href=" mjImgUrl(chat.opt?.imageUrl)" target="_blank">{{ $t('mjchat.openurl') }}</a>
     </NButton>
-  </div>
-
-  <NButton v-if="chat.opt?.imageUrl" type="primary">
-    <a :href=" mjImgUrl(chat.opt?.imageUrl)" target="_blank">{{ $t('mjchat.openurl') }}</a>
-  </NButton>
   </div>
 </template>
 
