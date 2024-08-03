@@ -1,16 +1,39 @@
 # 功能升级日志
 
 #  计划 
+# 2.19.10
+- 😄 新增：视频 runway gen3 支持图片
+- 😄 新增：mj 6.1选项
+- 😄 新增：runway-gen3-fast 选项
+- 🐞 修复：LUMA_SERVER 出现标签选项
+
+# 2.19.9
+- 🐞 修复：luma 说明
+- 🐞 修复：Midjourney生图后，保留prompt在输入框中 #468
+
+# 2.19.8
+- 🐞 修复：runway 过期.重新获取
+
+# 2.19.7
+- 😄 新增：视频 runway 模块
+- 🐞 修复：gpt-4o-mini 图片问题
+- 🐞 修复：luma 说明
+ 
+
+# 2.19.6
+- 😄 新增：gpt-4o-mini模型
+- 🐞 修复：viggle 下载有问题
+
 # 2.19.5
 - 🐞 修复：后续会有luma尾帧么 #452
--
+- 😄 新增：viggle pro 跟 relax 能相互切换
 
 # 2.19.4
 - 🐞 修复：luma pro 与 relax版本切换 获取任务有问题
-- 😄 新增：viggle pro 跟 relax 能相互切换
+
 
 # 2.19.3
-- 🐞 修复：viggle个人上传视频无效
+- 🐞 修复：viggle 个人上传视频无效
 
 # 2.19.2
 - 😄 新增：跳舞视频viggle模块

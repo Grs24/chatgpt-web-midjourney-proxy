@@ -376,16 +376,16 @@ export const canVisionModel = (model: string) => {
 
   return false
 }
-export const isCanBase64Model = (model: string) => {
-  // gpt-4o
-  // customVisionModel
-  const visionArr = ['gemini-pro-vision', 'gpt-4o', 'gpt-4o-2024-05-13', 'gemini-pro-1.5', 'gpt-4-turbo', 'gpt-4-turbo-2024-04-09', 'gpt-4-vision-preview', 'luma-video', 'claude-3-5-sonnet-20240620', 'claude-3-sonnet-20240229', 'claude-3-opus-20240229', defaultVisionModel()]
-  if (homeStore.myData.session.customVisionModel) {
-    homeStore.myData.session.customVisionModel.split(/[ ,]+/ig).map((v: string) => {
-      visionArr.push(v.toLocaleLowerCase())
-    })
-  }
-  return visionArr.includes(model)
+export const isCanBase64Model=(model:string)=>{
+    //gpt-4o
+    //customVisionModel
+    let visionArr=['gemini-pro-vision','gpt-4o','gpt-4o-2024-05-13','gemini-pro-1.5','gpt-4-turbo','gpt-4-turbo-2024-04-09','gpt-4-vision-preview','luma-video','claude-3-5-sonnet-20240620' ,'claude-3-sonnet-20240229','claude-3-opus-20240229', defaultVisionModel() ]
+    if( homeStore.myData.session.customVisionModel ){
+        homeStore.myData.session.customVisionModel.split(/[ ,]+/ig).map( (v:string)=>{
+            visionArr.push( v.toLocaleLowerCase() )
+        });
+    }
+    return visionArr.indexOf(model)>-1
 }
 export const canBase64Model = (model: string) => {
   if (isCanBase64Model(model))
