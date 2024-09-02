@@ -25,6 +25,8 @@ export const KnowledgeCutOffDate: Record<string, string> = {
   "gpt-4o": "2023-10", 
   "gpt-4o-mini": "2023-10", 
   "gpt-4o-mini-2024-07-18": "2023-10", 
+  "gpt-4o-2024-08-06": "2023-10", //chatgpt-4o-latest
+  "chatgpt-4o-latest": "2023-10", 
   "gpt-4-turbo": "2023-12", 
   "gpt-4-turbo-preview": "2023-12",
   "claude-3-opus-20240229": "2023-08",
@@ -462,10 +464,15 @@ export const openaiSetting= ( q:any,ms:MessageApiInjection )=>{
                 MJ_SERVER:url, 
                 SUNO_SERVER:url,
                 LUMA_SERVER:url,
+                RUNWAY_SERVER:url,
+                VIGGLE_SERVER:url,
+                
                 OPENAI_API_KEY:key,
                 MJ_API_SECRET:key, 
                 SUNO_KEY:key,
-                LUMA_KEY:key
+                LUMA_KEY:key,
+                RUNWAY_KEY:key,
+                VIGGLE_KEY:key
              } )
             blurClean();
             gptServerStore.setMyData( gptServerStore.myData );
@@ -579,7 +586,6 @@ export const getHistoryMessage= async (dataSources:Chat.Chat[],loadingCnt=1 ,sta
                let fileBase64= JSON.parse(str) as string[];
                let arr =  fileBase64.filter( (ff:string)=>ff.indexOf('http')>-1);
                if(arr.length>0) content = arr.join(' ')+' '+ content ;
-
                mlog(t('mjchat.attr') ,o.opt.images[0] , content );
             }catch(ee){
             }
