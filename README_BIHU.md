@@ -28,15 +28,15 @@
 
 ##### 一键打包镜像并推送到阿里云
 
-`node ./deloy.js`
+`node ./docker-deploy.js`
 
 ##### 单独打包 Docker 镜像
 
-`node deloy.js build`
+`node docker-deploy.js build`
 
 ##### 单独推送镜像到阿里云
 
-`node deloy.js push`
+`node docker-deploy.js push`
 
 ### 2. 在服务器拉取最新镜像并部署更新
 
