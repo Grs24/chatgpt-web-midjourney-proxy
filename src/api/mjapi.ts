@@ -1,45 +1,50 @@
 
  //import { useChat } from '@/views/chat/hooks/useChat'
 
- import { gptConfigStore, gptServerStore, homeStore, useAuthStore } from "@/store";
- import { copyToClip } from "@/utils/copy";
- import { isNumber } from "@/utils/is";
- import { localGet, localSaveAny } from "./mjsave";
- import { t } from "@/locales";
- //import { useMessage } from "naive-ui";
- export interface gptsType{
-		 gid:string
-		 name:string
-		 logo:string
-		 info:string
-		 use_cnt?:string
-		 bad?:string|number
- }
-	//const { addChat, updateChat, updateChatSome, getChatByUuidAndIndex } = useChat()
- export function upImg(file:any   ):Promise<any>
- {
-		 const maxSize= homeStore.myData.session.uploadImgSize? (+homeStore.myData.session.uploadImgSize):1
-		 return new Promise((h,r)=>{
-				 const filename = file.name;
-				 if(file.size>(1024*1024 * maxSize)){
-						 r(t('mjchat.no1m',{m:maxSize}))
-						 return ;
-				 }
-				 if (! (filename.endsWith('.jpg') ||
-						 filename.endsWith('.gif') ||
-						 filename.endsWith('.png') ||
-						 filename.endsWith('.jpeg') )) {
-						 r(t('mjchat.imgExt') );
-						 return ;
-				 }
-				 const reader = new FileReader();
-				 // 当读取操作完成时触发该事件
-				 //reader.onload = (e:any)=> st.value.fileBase64 = e.target.result;
-				 reader.onload = (e:any)=>  h( e.target.result);
-				 reader.readAsDataURL(file);
-		 })
+import { gptConfigStore, gptServerStore, homeStore, useAuthStore } from "@/store";
+import { copyToClip } from "@/utils/copy";
+import { isNumber } from "@/utils/is";
+import { localGet, localSaveAny } from "./mjsave";
+import { t } from "@/locales";
+//import { useMessage } from "naive-ui";
+export interface gptsType{
+    gid:string
+    name:string
+    logo:string
+    info:string
+    use_cnt?:string
+    bad?:string|number
+}
+ //const { addChat, updateChat, updateChatSome, getChatByUuidAndIndex } = useChat()
+export function upImg(file:any   ):Promise<any>
+{
+    const maxSize= homeStore.myData.session.uploadImgSize? (+homeStore.myData.session.uploadImgSize):1
+    return new Promise((h,r)=>{
+        const filename = file.name;
+        if(file.size>(1024*1024 * maxSize)){
+            r(t('mjchat.no1m',{m:maxSize}))
+            return ;
+        }
+        if (! (filename.endsWith('.jpg') ||
+            filename.endsWith('.gif') ||
+            filename.endsWith('.png') ||
+            filename.endsWith('.jpeg') )) {
+            r(t('mjchat.imgExt') );
+            return ;
+        }
+        const reader = new FileReader();
+        // 当读取操作完成时触发该事件
+        //reader.onload = (e:any)=> st.value.fileBase64 = e.target.result;
+        reader.onload = (e:any)=>  h( e.target.result);
+        reader.readAsDataURL(file);
+    })
 
- }
+}
+
+export const clearImageBase64= ( str:string)=>{
+    let arr= str.split('base64,',2 )
+    return arr[1]??arr[0];
+}
 
  export const file2blob= (selectedFile: any  )=>{
 		 return new Promise<{blob:Blob,filename:string}>((resolve, reject) => {

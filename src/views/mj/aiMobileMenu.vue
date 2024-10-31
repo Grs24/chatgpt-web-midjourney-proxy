@@ -4,7 +4,7 @@ import { homeStore } from '@/store'
 import { computed,watch ,ref  } from 'vue'
 import { router } from '@/router'
 
-import aiDrawInput from './aiDrawInput.vue'; 
+import aiDrawInput from './aiDrawInput.vue';
 import {NDrawerContent,NDrawer} from "naive-ui";
 import { isDisableMenu } from '@/api';
 const st= ref({show:true})
@@ -40,8 +40,13 @@ watch(()=>homeStore.myData.act, (n:string)=>{
       </div>
       <div  v-if="!isDisableMenu ( 'gpts')"  class="flex items-center justify-center flex-col "  @click="homeStore.setMyData({act:'showgpts'}) " >
         <SvgIcon icon="ri:apps-fill" class="text-3xl"></SvgIcon>
-        <div class="text-[13px]">GPTs</div>
+        <div class="text-[13px]">Bot商店</div>
       </div>
+
+      <!-- <div v-if="!isDisableMenu ( 'realtime')"    class="flex items-center justify-center flex-col "  @click="homeStore.setMyData({act:'openRealtime'}) " >
+        <SvgIcon icon="ri:mic-fill" class="text-3xl"></SvgIcon>
+        <div class="text-[13px]">{{$t('mj.rttab')}}</div>
+      </div> -->
 
 
       <div v-if="!isDisableMenu ( 'draws')" class="flex items-center justify-center flex-col "  @click="homeStore.setMyData({act:'showDraw'}) " :class="[goHome=='draw' ? 'active' : '']" >
@@ -51,7 +56,7 @@ watch(()=>homeStore.myData.act, (n:string)=>{
       <div  v-if="!isDisableMenu ( 'gallery')"  class="flex items-center justify-center flex-col " @click="homeStore.setMyData({act:'gallery'})" >
         <SvgIcon icon="material-symbols:imagesmode-outline" class="text-3xl"></SvgIcon>
         <div class="text-[13px]">{{$t('mjtab.gallery')}}</div>
-      </div> 
+      </div>
   </div>
 
   <n-drawer v-model:show="st.show"  class="!h-[90vh] !max-h-[660px]"     placement="bottom" v-if="goHome=='draw'">

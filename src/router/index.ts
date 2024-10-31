@@ -21,7 +21,7 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
-   {
+  {
     path: '/g',
     name: 'g',
     component: ChatLayout,
@@ -29,12 +29,12 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         path: '/g/:gid',
-        name: 'GPTs',
+        name: 'Bot商店',
         component: () => import('@/views/chat/index.vue'),
       },
     ],
   },
-   {
+  {
     path: '/m',
     name: 'm',
     component: ChatLayout,
@@ -61,7 +61,6 @@ const routes: RouteRecordRaw[] = [
     ],
   },
 
-
   {
     path: '/draw',
     name: 'Rootdraw',
@@ -76,7 +75,7 @@ const routes: RouteRecordRaw[] = [
     ],
   },
 
-    {
+  {
     path: '/music',
     name: 'music',
     component: sunoLayout,
@@ -89,38 +88,50 @@ const routes: RouteRecordRaw[] = [
       },
     ],
 
-    
-
   },
+  // {
+  //   path: '/video',
+  //   name: 'video',
+  //   component: lumaLayout,
+  //   redirect: '/video/index',
+  //   children: [
+  //     {
+  //       path: '/video/:uuid?',
+  //       name: 'video',
+  //       component: () => import('@/views/luma/video.vue'),
+  //     },
+  //   ],
+  // },
+
+  // {
+  //   path: '/dance',
+  //   name: 'dance',
+  //   component: lumaLayout,
+  //   redirect: '/dance/index',
+  //   children: [
+  //     {
+  //       path: '/dance/:uuid?',
+  //       name: 'dance',
+  //       component: () => import('@/views/viggle/dance.vue'),
+  //     },
+  //   ],
+  // },
+
   {
-    path: '/video',
-    name: 'video',
+    path: '/wav',
+    name: 'wav',
     component: lumaLayout,
-    redirect: '/video/index',
+    redirect: '/wav/index',
     children: [
       {
-        path: '/video/:uuid?',
-        name: 'video',
-        component: () => import('@/views/luma/video.vue'),
+        path: '/wav/:uuid?',
+        name: 'wav',
+        component: () => import('@/views/wav/wav.vue'),
       },
     ],
   },
 
-  {
-    path: '/dance',
-    name: 'dance',
-    component: lumaLayout,
-    redirect: '/dance/index',
-    children: [
-      {
-        path: '/dance/:uuid?',
-        name: 'dance',
-        component: () => import('@/views/viggle/dance.vue'),
-      },
-    ],
-  },
-
-  //调试
+  // 调试
   // {
   //   path: '/mytest',
   //   name: 'mytest',

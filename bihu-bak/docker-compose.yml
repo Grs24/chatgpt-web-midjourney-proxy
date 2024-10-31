@@ -1,0 +1,23 @@
+version: '3'
+services:
+  chatgpt-midjourney-web:
+    image: registry.cn-shenzhen.aliyuncs.com/bihupiaodian/chatgpt-midjourney-web:latest
+    container_name: chatgpt-midjourney-web-prod
+    ports:
+      - "6016:3002"
+    environment:
+      OPENAI_API_BASE_URL: "https://api.openai-up.com"
+      OPENAI_API_KEY: "sk-jvOgVLpvX9GWawGo275eD04cB3254a23977267E369Ac2903"
+      MJ_SERVER: "https://api.openai-up.com"
+      MJ_API_SECRET: "sk-jvOgVLpvX9GWawGo275eD04cB3254a23977267E369Ac2903"
+      SUNO_SERVER: "https://api.openai-hk.com"
+      SUNO_KEY: "hk-ycfgh2100004206808558195628219a1b63ac783703aadd0"
+      API_UPLOADER: "1"
+      AUTH_SECRET_KEY: "bihukeji2023"
+      UPLOAD_IMG_SIZE: 10
+    volumes:
+      - ./uploads:/app/uploads
+    # 添加拉取策略，确保总是尝试拉取最新镜像
+    pull_policy: always
+    # 如果需要在容器启动时自动重启，可以添加以下行
+    restart: unless-stopped
